@@ -5,13 +5,33 @@ import { getIndustrySaga } from '../../actions/industyActions'
 import { Empty } from 'antd';
 
 class IndustriesList extends Component {
-    componentDidMount() {
-        this.props.getIndustrySaga(this.props.appData.token)
+
+    fetchIndustries() {
+        //this.props.getIndustrySaga(this.props.appData.token)
     }
+    drawIndustries() {
+        return this.props.industryData.industries.map((e, i) => {
+            return <li key={i}>ID:{e.id} Nombre:{e.name}</li>
+        })
+    }
+
     render() {
         return (
             <div>
-                Detalle de industrias
+
+                {this.props.industryData.industries.length > 0 ? (
+                    <div>
+                        {this.drawIndustries()}
+
+                    </div>
+                ) : (
+                    <Empty
+                        description={
+                            <span>
+                                No te registraste aun
+                            </span>
+                        } />
+                )}
             </div>
         )
     }
@@ -20,11 +40,13 @@ class IndustriesList extends Component {
 //Set the main stage to props i need to use on this component
 const mapStateToProps = (state) => {
     const {
-        appData
+        appData,
+        industryData
     } = state;
 
     return {
-        appData
+        appData,
+        industryData
     };
 };
 

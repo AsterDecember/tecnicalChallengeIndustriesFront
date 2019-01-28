@@ -1,14 +1,21 @@
 import axios from 'axios';
 
 export const getTokenAPI = ()=>{
-
     return axios.post('http://localhost:3000/apps/register')
         .then(r=>{
-            console.log(r)
             return r
         })
         .catch(e=>{
             console.log(e)
         })
+}
 
+export const getIndustriesAPI = (token) =>{
+    return axios.get('http://localhost:3000/industries/',{ headers: { authorization:token}})
+        .then(r=>{
+            return r
+        })
+        .catch(e=>{
+            console.log(e)
+        })
 }

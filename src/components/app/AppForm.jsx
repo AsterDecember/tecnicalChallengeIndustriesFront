@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from "redux";
 import { getTokenSaga } from '../../actions/appActions'
+import { getIndustrySaga } from '../../actions/industyActions'
 import { connect } from "react-redux";
 import {
     Form, Icon, Input, Button,
@@ -22,7 +23,12 @@ class AppForm extends Component {
         console.log(this.state.app)
         this.props.getTokenSaga(this.state.app)
     }
-
+    componentDidUpdate(prevProps, prevState){
+        if(this.props.appData.token){
+            console.log('token!!')
+            this.props.getIndustrySaga(this.props.appData.token)
+        }
+    }
     render() {
         return (
             <div style={{ width: "60vw", height: "60vh", display: "flex", justifyContent: "center" }}>
@@ -61,7 +67,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 
     return bindActionCreators({
-        getTokenSaga
+        getTokenSaga,
+        getIndustrySaga
     }, dispatch);
 
 };

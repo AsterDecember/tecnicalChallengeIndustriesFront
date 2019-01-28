@@ -1,14 +1,15 @@
 import {
-    FETCH_INDUSTY_SAGA
+    FETCH_INDUSTY_SAGA,FETCH_INDUSTYID_SAGA
 } from "../actions/industyActions";
 
 const industryData = (state = {
-    app: {}
+    industries: [],
+    industry:{}
 }, action) => {
     switch (action.type) {
         case FETCH_INDUSTY_SAGA:
             const industries = action.payload
-            //console.log('reducer saga',action.payload)
+            console.log('reducer FETCH saga',action.payload)
             return { ...state, industries }
         case FETCH_INDUSTYID_SAGA:
             const { industry } = action.payload
@@ -18,4 +19,4 @@ const industryData = (state = {
     }
 }
 
-export default appData;
+export default industryData;
