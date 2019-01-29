@@ -12,7 +12,8 @@ const industryData = (state = {
             console.log('reducer FETCH saga',action.payload)
             return { ...state, industries }
         case FETCH_INDUSTYID_SAGA:
-            const { industry } = action.payload
+            const industry  = action.payload
+            console.log('hey!')
             return { ...state, industry }
         default:
             return state

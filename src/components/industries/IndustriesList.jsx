@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getIndustrySaga } from '../../actions/industyActions'
 import { Empty } from 'antd';
+import {Link} from "react-router-dom";
 
 class IndustriesList extends Component {
 
@@ -11,7 +12,7 @@ class IndustriesList extends Component {
     }
     drawIndustries() {
         return this.props.industryData.industries.map((e, i) => {
-            return <li key={i}>ID:{e.id} Nombre:{e.name}</li>
+            return <Link to={`/industry/${e._id}`} key={i}><li>ID:{e.id} Nombre:{e.name}</li></Link>
         })
     }
 

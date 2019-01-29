@@ -19,3 +19,13 @@ export const getIndustriesAPI = (token) =>{
             console.log(e)
         })
 }
+
+export const getIndustryAPI = (info) => {
+    return axios.get(`http://localhost:3000/industries/${info.id}`,{ headers: { authorization:info.token}})
+        .then(r=>{
+            return r
+        })
+        .catch(e=>{
+            console.log(e)
+        })
+}

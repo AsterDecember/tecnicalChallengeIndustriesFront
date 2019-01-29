@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'antd/dist/antd.css'
-import Home from './components/Home';
+import Routes from './Routes'
+import { Layout } from 'antd';
 
+const {
+  Header, Footer, Content,
+} = Layout;
 class App extends Component {
   render() {
     return (
-      <Home />
-    );
+      <Layout>
+        <Header><h2 style={{ color: "white" }}>Industries App</h2></Header>
+        <Content style={{ display: "flex", justifyContent: "center" }}>
+          <Routes />
+        </Content>
+        <Footer>Code by Mike</Footer>
+      </Layout >
+    )
   }
 }
 
